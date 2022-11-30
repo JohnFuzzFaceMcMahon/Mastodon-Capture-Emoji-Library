@@ -58,7 +58,7 @@ BEGIN {
 			filetype = url
 			gsub("^.*[.]", "", filetype)
 			# calculate the full filename
-			filename = category "___" shortcode "." filetype
+			filename = Instance "___" category "___" shortcode "." filetype
 			# get the file
 			print "Downloading (" ++DownloadCount ")" filename " from " url
 			cmd2 = "curl --silent " url " >" filename
@@ -72,7 +72,7 @@ BEGIN {
 				filetype = static_url
 				gsub("^.*[.]", "", filetype)
 				# calculate the full filename
-				filename = category "___" shortcode "___static." filetype
+				filename = Instance "___" category "___" shortcode "___static." filetype
 				# get the file
 				print "Downloading (" ++DownloadCount ")" filename " from " static_url " (static)"
 				cmd2 = "curl --silent " static_url " >" filename

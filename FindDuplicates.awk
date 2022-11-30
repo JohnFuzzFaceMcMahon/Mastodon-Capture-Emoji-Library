@@ -1,25 +1,18 @@
 BEGIN {
-    # perform an ls command
-    cmd="ls";
+    # perform the shasum command
+    cmd="shasum --algorithm 512256 --UNIVERSAL *";
     for (; (cmd|getline inp)>0 ;) {
-        # file is in inp
-        # do a shasum
-        cmd2="shasum " inp;
-        for (; (cmd2|getline inp2)>0 ;) {
-            split(inp2,array);
-            checksum=array[1];
-            print checksum;
-            # did we already see this file
-            if ( CHK[checksum]==1) {
-                # yes we did
-                cmd3="mv " inp " DUPLICATE." inp;
-                print cmd3;
-            } else {
-                # no we did not
-                CHK[checksum]=1;
-            }
-        }
-        close(cmd2);
+		split(inp,WorkArray,FS);
+		Checksum=WorkArray[1];
+		Filename=substr(WorkArray[2],2);
+		if ( FileArray[Checksum]=="" ) {
+			FileArray[Checksum]=Filename
+		} else {
+			print "DUPLICATE",Filename,FileArray[Checksum]
+			cmd2="mv " Filename " DUPLICATE." Filename
+			system(cmd2);
+			close(cmd2);
+		}
     }
     close(cmd);
 }
