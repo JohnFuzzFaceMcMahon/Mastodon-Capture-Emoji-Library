@@ -1,5 +1,8 @@
 # Mastodon-Capture-Emoji-Library
 
+# john@mcmahon.engineering
+# https://github.com/JohnFuzzFaceMcMahon/Mastodon-Capture-Emoji-Library
+
 A simple routine to capture the Emoji Library from a Mastodon server
 
 Downloads into the current directory.
